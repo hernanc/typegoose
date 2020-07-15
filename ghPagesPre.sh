@@ -4,10 +4,13 @@
 shopt -s dotglob nullglob
 
 cd website
+yarn
 yarn build
 cd ..
-find . -not -regex "^\.\/website\/build.*\|^.\/\.git.*" -delete
+find . -not -regex "^\.\/website\/build.*\|^.\/\.git.*" -delete # delete everything that is not starting with ".git" or "website/build"
 mv website/build/* ./
 
 # redundant, just to have it clean
-rm -rf github-page
+rm -rf website
+
+ls -al
