@@ -28,10 +28,7 @@ jobs:
     - name: 'Deploy to GitHub Pages'
       stage: deploy
       if: branch IN (master,docusaurus) AND NOT type IN (pull_request) # i know this redundant, but it is needed otherwise the test will always create a deploy of this
-      script: |
-        cd website
-        yarn
-        DEPLOYMENT_BRANCH=gh-pages GIT_USER=traviscibot yarn deploy
+      script: bash ./ghPagesPre.sh
       deploy:
         provider: pages
         skip_cleanup: true # while using deployment v1
